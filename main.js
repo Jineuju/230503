@@ -13,3 +13,5 @@ $(document).ready(function () {
     $(this).children("a").removeClass("on");
   });
 });
+
+// slide
