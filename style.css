@@ -80,6 +80,7 @@ header .inner h1 {
   top: 50%;
   right: 50px;
   transform: translateY(-50%);
+  z-index: 10;
 }
 
 #gnb > li {
@@ -131,25 +132,15 @@ header .inner h1 {
 
 /* slider */
 #slide {
-  position: relative;
-  width: 100%;
-}
-
-#slide .frame {
   width: 1200px;
   height: 300px;
   margin: 0 auto;
   overflow: hidden;
 }
 
-#slide .frame li {
-  display: none;
-  bottom: 0;
-  left: 0;
-}
-
-#slide .frame li.on {
-  display: block;
+#slide .frame {
+  width: 900px;
+  position: relative;
 }
 
 /* contentBox */
@@ -167,87 +158,94 @@ header .inner h1 {
 
 .NGboard {
   flex: 1.5;
+  height: 200px;
+  overflow: hidden;
 }
 
 .NGboard .tab {
-  flex: 1;
   display: flex;
   width: 100%;
-  margin-top: 15px;
-  border-bottom: 1px solid #333;
+  height: 50px;
 }
 
 .NGboard .tab li {
-  width: 20%;
-  margin-left: 5px;
+  width: 100px;
   background-color: #333;
-}
-
-.NGboard .tab li:last-child {
-  margin-left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .NGboard .tab li a {
-  display: block;
-  padding: 10px;
-  font-size: 14px;
-  color: #f8f8f8;
-  font-weight: bold;
-  text-align: center;
-  border: 1px solid #333;
-  border-bottom: none;
-}
-
-.NGboard .tab li:nth-child(1) a {
-  border-right: none;
+  font: bold 15px/1 "arial";
+  color: #fff;
 }
 
 .NGboard .tab li.on {
   background-color: #fff;
-  border-bottom: 1px solid #fff;
-  margin-bottom: -4px;
 }
 
 .NGboard .tab li.on a {
   color: #333;
 }
 
-.NGboard .tab .content {
+.content {
   width: 100%;
-  height: 100%;
+  height: 150px;
+  position: relative;
   /*calc를 사용해서 정확한 높이값을 지정하는 것이 필요*/
 }
 
-#notice {
+.content div {
   width: 100%;
   height: 100%;
-}
-
-#notice > ul {
-  margin: 0 auto;
-  width: 100%;
-  padding: 8px;
-}
-
-#notice > ul > li {
-  display: flex;
-  padding: 5px 0;
-  font-size: 13px;
-  cursor: pointer;
-  justify-content: space-between;
-}
-
-#notice > ul > li:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-#gallery {
-  height: 100%;
-  margin: 10px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  opacity: 0;
+  z-index: 1;
 }
+
+.content div.on {
+  opacity: 1;
+  z-index: 2;
+}
+
+#notice {
+  justify-content: flex-start;
+}
+
+#notice ul {
+  width: 100%;
+}
+
+#notice ul li {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  cursor: pointer;
+}
+
+#notice ul li a {
+  font: 13px/30px "맑은 고딕";
+  color: #333;
+  margin-left: 10px;
+}
+
+#notice ul li span {
+  font: 10px/30px "arial";
+  margin-right: 10px;
+}
+
+#notice ul li:hover {
+  background-color: #eee;
+}
+
+/* banner */
 
 .banner {
   flex: 1;
@@ -271,9 +269,9 @@ header .inner h1 {
   justify-content: space-evenly;
 }
 
-.bro div {
+.bro a {
   flex: 1;
 }
-.baro div span {
+.baro a span {
   font-size: 10px;
 }
